@@ -1,6 +1,7 @@
 package homelet.visual;
 
-import com.apple.eawt.Application;
+//import com.apple.eawt.Application;
+
 import homelet.GH.handlers.Layouter.SpringLayouter;
 import homelet.GH.handlers.Layouter.SpringLayouter.Position;
 import homelet.GH.utils.ToolBox;
@@ -59,35 +60,35 @@ public class Display extends JFrame{
 		// controlPane
 		layouter.put(Position.CONSTRAIN_X, controlPane, DEFAULT_GAP, Position.CONSTRAIN_X, panel);
 		layouter.put(Position.CONSTRAIN_Y, controlPane, DEFAULT_GAP, Position.CONSTRAIN_Y, panel);
-		layouter.put(Position.CONSTRAIN_X_WIDTH, controlPane, -DEFAULT_GAP, Position.CONSTRAIN_X_WIDTH, panel);
+		layouter.put(Position.CONSTRAIN_X_WIDTH, controlPane, - DEFAULT_GAP, Position.CONSTRAIN_X_WIDTH, panel);
 		// gamePane
 		layouter.put(Position.CONSTRAIN_X, gamePane, 0, Position.CONSTRAIN_X, controlPane);
 		layouter.put(Position.CONSTRAIN_Y, gamePane, DEFAULT_GAP, Position.CONSTRAIN_Y_HEIGHT, controlPane);
-		layouter.put(Position.CONSTRAIN_X_WIDTH, gamePane, -DEFAULT_GAP, Position.CONSTRAIN_X_WIDTH, panel);
-		layouter.put(Position.CONSTRAIN_Y_HEIGHT, gamePane, -DEFAULT_GAP, Position.CONSTRAIN_Y_HEIGHT, panel);
+		layouter.put(Position.CONSTRAIN_X_WIDTH, gamePane, - DEFAULT_GAP, Position.CONSTRAIN_X_WIDTH, panel);
+		layouter.put(Position.CONSTRAIN_Y_HEIGHT, gamePane, - DEFAULT_GAP, Position.CONSTRAIN_Y_HEIGHT, panel);
 		// menuBar
 		setJMenuBar(menuBar);
 		// init app
 		String OsName = System.getProperty("os.name");
 		// is mac
-		if(OsName.contains("Mac")){
-			Image       icon_image = PictureKey.ICON.get().image();
-			Application app        = Application.getApplication();
-			app.setAboutHandler(e->menuBar.showAboutGame());
-			app.disableSuddenTermination();
-			app.setQuitHandler((QuitEvent quitEvent, QuitResponse quitResponse)->{
-				onQuitGame();
-				quitResponse.performQuit();
-			});
-			app.setDockIconImage(icon_image);
-		}
+		//		if(OsName.contains("Mac")){
+		//			Image       icon_image = PictureKey.ICON.get().image();
+		//			Application app        = Application.getApplication();
+		//			app.setAboutHandler(e->menuBar.showAboutGame());
+		//			app.disableSuddenTermination();
+		//			app.setQuitHandler((QuitEvent quitEvent, QuitResponse quitResponse)->{
+		//				onQuitGame();
+		//				quitResponse.performQuit();
+		//			});
+		//			app.setDockIconImage(icon_image);
+		//		}
 		pack();
 	}
 	
 	void setDisplayDimension(Dimension dimension){
-		Dimension gamePaneDI    = getGamePaneDimension(dimension);
+		Dimension gamePaneDI = getGamePaneDimension(dimension);
 		Dimension controlPaneDI = getControlPaneDimension(dimension);
-		Dimension displayDI     = getDisplayDimension(gamePaneDI, controlPaneDI);
+		Dimension displayDI = getDisplayDimension(gamePaneDI, controlPaneDI);
 		ToolBox.setPreferredSize(this, displayDI);
 		ToolBox.setPreferredSize(gamePane, gamePaneDI);
 		ToolBox.setPreferredSize(controlPane, controlPaneDI);
@@ -103,7 +104,7 @@ public class Display extends JFrame{
 	}
 	
 	private Dimension getDisplayDimension(Dimension game, Dimension control){
-		return new Dimension(game.width + 2 * DEFAULT_GAP, game.height + control.height + 22 + 22 + 3 * DEFAULT_GAP);
+		return new Dimension(game.width + 2 * DEFAULT_GAP, game.height + control.height + 22 + 15 + 22 + 3 * DEFAULT_GAP);
 	}
 	
 	public void showDisplay(){

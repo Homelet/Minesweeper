@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="HomeletUtilities">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/HomeletUtilities.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
